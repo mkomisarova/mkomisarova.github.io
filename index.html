@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,37 +11,43 @@
       color: #222;
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: row;
     }
     header {
       background-color: #ffe599;
       padding: 2rem;
       text-align: center;
+      width: 100%;
     }
     h1 {
       margin: 0;
       font-size: 2.5rem;
     }
-    nav {
+    .sidebar {
       background-color: #fce5a5;
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      font-size: 1.1rem;
+      width: 200px;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+      height: 100vh;
+      position: fixed;
     }
-    nav a {
+    .sidebar a {
+      display: block;
+      margin-bottom: 1rem;
       text-decoration: none;
       color: #333;
+      font-size: 1.1rem;
     }
-    section {
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 1rem;
+    main {
+      margin-left: 220px;
+      padding: 2rem;
+      max-width: 800px;
     }
     footer {
       text-align: center;
       font-size: 0.9rem;
-      margin-bottom: 2rem;
+      margin-top: 4rem;
     }
     .socials a {
       margin-right: 1rem;
@@ -52,45 +57,47 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Milana Komisarova</h1>
-    <p>Math lover • Problem solver • Always learning</p>
-    <div class="socials">
-      <a href="mailto:your@email.com">Email</a>
-      <a href="https://www.linkedin.com/in/milana-komisarova-769117249" target="_blank">LinkedIn</a>
-      <a href="https://github.com/mkomisarova" target="_blank">GitHub</a>
-    </div>
-  </header>
-
-  <nav>
+  <div class="sidebar">
     <a href="#about">About</a>
     <a href="#awards">Awards</a>
     <a href="#cv">CV</a>
-  </nav>
+  </div>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m passionate about mathematics and problem solving, with years of experience in olympiads and competitive environments. I enjoy diving into new ideas and learning fast, and I’m currently open to math-related opportunities where I can contribute and grow.
-    </p>
-  </section>
+  <main>
+    <header>
+      <h1>Milana Komisarova</h1>
+      <p>Math lover • Problem solver • Always learning</p>
+      <div class="socials">
+        <a href="mailto:your@email.com">Email</a>
+        <a href="https://www.linkedin.com/in/milana-komisarova-769117249" target="_blank">LinkedIn</a>
+        <a href="https://github.com/mkomisarova" target="_blank">GitHub</a>
+      </div>
+    </header>
 
-  <section id="awards">
-    <h2>Awards & Achievements</h2>
-    <ul>
-      <li>IMO Honorable Mention</li>
-      <li>ESPR Participant (&lt;5% acceptance)</li>
-      <li>Jane Street Insight Program</li>
-    </ul>
-  </section>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I’m passionate about mathematics and problem solving, with years of experience in olympiads and competitive environments. I enjoy diving into new ideas and learning fast, and I’m currently open to math-related opportunities where I can contribute and grow.
+      </p>
+    </section>
 
-  <section id="cv">
-    <h2>Download My CV</h2>
-    <p><a href="cv.pdf" download>Click here to download my CV (PDF)</a></p>
-  </section>
+    <section id="awards">
+      <h2>Awards & Achievements</h2>
+      <ul>
+        <li>IMO Honorable Mention</li>
+        <li>ESPR Participant (&lt;5% acceptance)</li>
+        <li>Jane Street Insight Program</li>
+      </ul>
+    </section>
 
-  <footer>
-    &copy; 2025 Milana Komisarova
-  </footer>
+    <section id="cv">
+      <h2>Download My CV</h2>
+      <p><a href="cv.pdf" download>Click here to download my CV (PDF)</a></p>
+    </section>
+
+    <footer>
+      &copy; 2025 Milana Komisarova
+    </footer>
+  </main>
 </body>
 </html>
