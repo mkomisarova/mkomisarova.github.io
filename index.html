@@ -85,14 +85,22 @@
       margin-top: 0;
       margin-bottom: 1rem;
     }
+    .content-section {
+    display: none;
+  }
+  .content-section.active {
+    display: block;
+  }
   </style>
 </head>
 <body>
   <div class="sidebar">
     <a href="#about">About</a>
     <a href="#awards">Awards</a>
-    <a href="#files">Files</a>
     <a href="#languages">Languages</a>
+    <a href="#hobbies"> Hobbies </a>
+    <a href="#favs"> Favourites </a>
+    <a href="#files">Files</a>
   </div>
 
   <main>
@@ -107,14 +115,14 @@
       </div>
     </header>
 
-    <section id="about">
+    <section id="about" class="content-section">
       <h2>About Me</h2>
       <p>
         I’m passionate about mathematics and problem solving, with years of experience in olympiads and competitive environments. I enjoy diving into new ideas and learning fast, and I’m currently open to math-related opportunities where I can contribute and grow.
       </p>
     </section>
 
-    <section id="awards">
+    <section id="awards" class="content-section">
       <h2>Awards & Achievements</h2>
       <h3>Olympiads</h3>
       <h4>International</h4>
@@ -130,6 +138,12 @@
         <li>Physics, bronze 2020</li>
         <li>Biology, participant 2022</li>
         <li>Chemistry, participant 2021</li>
+        <li>German, participant 2021</li>
+      </ul>
+      <h4>Latvian Open</h4>
+      <ul>
+        <li>Mathematics, gold 2016, 2017, 2018, 2020, 2021, silver 2015, 2019, 2022</li>
+        <li>Linguistics, silver 2020, 2021, 2022</li>
       </ul>
       <h3>Programs - participant</h3>
       <ul>
@@ -145,22 +159,36 @@
       </ul>
       <h3>Awards</h3>
       <ul>
-        <li>Janis Kasakovskis Award, 2022</li>
+        <li>Janis Kasakovskis Award (top overall math olympiad performer in Latvia for grades 5-12), 2022</li>
       </ul>
     </section>
 
-    <section id="languages">
+    <section id="languages" class="content-section">
       <h2>Languages</h2>
       <ul>
-        <li>Russian - native (20 years)</li>
-        <li>Latvian - native (18 years)</li>
+        <li>Russian - native </li>
+        <li>Latvian - native </li>
         <li>English - C1 (14 years)</li>
         <li>French - B2 (8 years)</li>
         <li>German - B1 (4 years)</li>
       </ul>
     </section>  
 
-    <section id="files">
+    <section id="hobbies" class="content-section">
+      <h2>Hobbies</h2>
+      <ul>
+        <li>Travelling</li>
+        <li>Sudoku</li>
+        <li>Board games</li>
+      </ul>
+    </section>
+
+    <section id="favs" class="content-section">
+      <h2>Current favourites</h2>
+        <h3></h3>
+    </section>
+    
+    <section id="files" class="content-section">
       <h2>Download any related files</h2>
       <p><a href="cv.pdf" download>Download my CV (pdf)</a></p>
       <p><a href="thesis milana komisarova.pdf" download>Download my thesis (pdf)</a></p>
@@ -170,5 +198,26 @@
       &copy; 2025 Milana Komisarova
     </footer>
   </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll(".content-section");
+      const sidebarLinks = document.querySelectorAll(".sidebar a");
+      document.querySelector("#about").classList.add("active");
+      sidebarLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+          sections.forEach(section => section.classList.remove("active"));
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.classList.add("active");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>
