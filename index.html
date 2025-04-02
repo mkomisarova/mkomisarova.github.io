@@ -135,7 +135,10 @@
     <section id="about" class="content-section">
       <h2>About Me</h2>
       <p>
-        I’m passionate about mathematics and problem solving, with years of experience in olympiads and competitive environments. I enjoy diving into new ideas and learning fast, and I’m currently open to math-related opportunities where I can contribute and grow.
+        I’m passionate about mathematics and problem solving, 
+        with years of experience in olympiads and competitive environments. 
+        I enjoy diving into new ideas and learning fast, 
+        and I’m currently open to math-related opportunities where I can contribute and grow.
       </p>
     </section>
 
@@ -247,6 +250,20 @@
         });
       });
     });
+    sections.forEach(section => section.classList.remove("active"));
+
+const targetSection = document.getElementById(targetId);
+if (targetSection) {
+  targetSection.classList.add("active");
+  const headerBox = document.getElementById("header-box");
+  if (targetId === "about") {
+    headerBox.style.display = "block";
+  } else {
+    headerBox.style.display = "none";
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
   </script>
 
 </body>
