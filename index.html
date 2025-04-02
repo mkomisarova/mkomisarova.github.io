@@ -247,39 +247,33 @@
     </footer>
   </main>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const sections = document.querySelectorAll(".content-section");
-      const sidebarLinks = document.querySelectorAll(".sidebar a");
-      document.querySelector("#about").classList.add("active");
-      sidebarLinks.forEach(link => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          const targetId = link.getAttribute("href").substring(1);
-          sections.forEach(section => section.classList.remove("active"));
-          const targetSection = document.getElementById(targetId);
-          if (targetSection) {
-            targetSection.classList.add("active");
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".content-section");
+    const sidebarLinks = document.querySelectorAll(".sidebar a");
+    const headerBox = document.getElementById("header-box");
+    document.querySelector("#about").classList.add("active");
+    headerBox.style.display = "block";
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetId);
+        sections.forEach(section => section.classList.remove("active"));
+        if (targetSection) {
+          targetSection.classList.add("active");
+          if (targetId === "about") {
+            headerBox.style.display = "block";
+          } else {
+            headerBox.style.display = "none";
           }
-        });
+
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       });
     });
-    sections.forEach(section => section.classList.remove("active"));
-
-const targetSection = document.getElementById(targetId);
-if (targetSection) {
-  targetSection.classList.add("active");
-  const headerBox = document.getElementById("header-box");
-  if (targetId === "about") {
-    headerBox.style.display = "block";
-  } else {
-    headerBox.style.display = "none";
-  }
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-  </script>
+  });
+</script>
 
 </body>
 </html>
