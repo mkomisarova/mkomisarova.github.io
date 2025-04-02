@@ -91,30 +91,47 @@
   .content-section.active {
     display: block;
   }
+    #header-box {
+    display: none;
+  }
+  #about.active ~ #header-box,
+  #header-box.show {
+    display: block;
+  }
   </style>
+  
 </head>
+
+  
 <body>
   <div class="sidebar">
+    <h3>For Recruiters</h3>
     <a href="#about">About</a>
     <a href="#awards">Awards</a>
     <a href="#languages">Languages</a>
-    <a href="#hobbies"> Hobbies </a>
-    <a href="#favs"> Favourites </a>
     <a href="#files">Files</a>
+  
+    <h3>For Friends</h3>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#travel">Travel</a>
+    <a href="#concerts">Concerts</a>
+    <a href="#music">Music</a>
   </div>
 
   <main>
-    <header>
-      <h1>Milana Komisarova</h1>
-      <p>Math lover • Problem solver • Always learning</p>
-      <div class="socials">
-        <a href="mailto:milana.komisarova@gmail.com"><img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email" />milana.komisarova@gmail.com</a>
-        <a href="tel:+37126855516"><img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone" />+371 26855516</a>
-        <a href="https://www.linkedin.com/in/milana-komisarova-769117249" target="_blank"><img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn" />LinkedIn</a>
-        <a href="cv.pdf" download><img src="https://img.icons8.com/ios-filled/50/000000/document.png" alt="CV" />CV</a>
-      </div>
-    </header>
-
+    <div id="header-box">
+      <header>
+        <h1>Milana Komisarova</h1>
+        <p>Math lover • Problem solver • Always learning</p>
+        <div class="socials">
+          <a href="mailto:milana.komisarova@gmail.com"><img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email" />milana.komisarova@gmail.com</a>
+          <a href="tel:+37126855516"><img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone" />+371 26855516</a>
+          <a href="https://www.linkedin.com/in/milana-komisarova-769117249" target="_blank"><img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn" />LinkedIn</a>
+          <a href="cv.pdf" download><img src="https://img.icons8.com/ios-filled/50/000000/document.png" alt="CV" />CV</a>
+        </div>
+      </header>
+    </div>
+    
     <section id="about" class="content-section">
       <h2>About Me</h2>
       <p>
@@ -174,6 +191,15 @@
       </ul>
     </section>  
 
+    
+    <section id="files" class="content-section">
+      <h2>Download any related files</h2>
+      <p><a href="cv.pdf" download>Download my CV (pdf)</a></p>
+      <p><a href="thesis milana komisarova.pdf" download>Download my thesis (pdf)</a></p>
+    </section>
+
+    <!-- Divider between recruiters and friends -->
+    
     <section id="hobbies" class="content-section">
       <h2>Hobbies</h2>
       <ul>
@@ -183,16 +209,20 @@
       </ul>
     </section>
 
-    <section id="favs" class="content-section">
-      <h2>Current favourites</h2>
-        <h3></h3>
+    <section id="concerts" class="content-section">
+      <h2>Concerts</h2>
+      <ul>
+        <li>Valery Meladze, Zurich, Mar 2025</li>
+        <li>Sabrina Carpenter, Paris, Mar 2025</li>
+        <li>Monetochka, Lisbon, Nov 2024</li>
+        <li>Taylor Swift, Warsaw, Aug 2024</li>
+        <li>Taylor Swift, Munich (from Olympiaberg), Jul 2024</li>
+        <li>Morgenshtern, Amsterdam, May 2024</li>
+        <li>Taylor Swift, Paris, May 2024</li>
+        <li>Harry Styles, Paris, Jun 2023</li>
+      </ul>
     </section>
     
-    <section id="files" class="content-section">
-      <h2>Download any related files</h2>
-      <p><a href="cv.pdf" download>Download my CV (pdf)</a></p>
-      <p><a href="thesis milana komisarova.pdf" download>Download my thesis (pdf)</a></p>
-    </section>
 
     <footer>
       &copy; 2025 Milana Komisarova
