@@ -507,56 +507,60 @@ body.dark-mode .theme-button {
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".content-section");
-    const sidebarLinks = document.querySelectorAll(".sidebar a");
-    const headerBox = document.getElementById("header-box");
-    document.querySelector("#about").classList.add("active");
+  const sections = document.querySelectorAll(".content-section");
+  const sidebarLinks = document.querySelectorAll(".sidebar a");
+  const headerBox = document.getElementById("header-box");
+
+  // Show "about" section initially
+  const aboutSection = document.querySelector("#about");
+  if (aboutSection) {
+    aboutSection.classList.add("active");
     headerBox.style.display = "block";
-    sidebarLinks.forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute("href").substring(1);
-        const targetSection = document.getElementById(targetId);
-        sections.forEach(section => section.classList.remove("active"));
-        if (targetSection) {
-          targetSection.classList.add("active");
-          if (targetId === "about") {
-            headerBox.style.display = "block";
-          } else {
-            headerBox.style.display = "none";
-          }
+  }
 
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      });
-    });
-  });
+  // Then handle dark/light theme
   const toggleBtn = document.getElementById('theme-toggle');
-    const body = document.body;
+  const body = document.body;
 
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      body.classList.add(savedTheme);
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    body.classList.add(savedTheme);
+  } else {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      body.classList.add('dark-mode');
     } else {
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        body.classList.add('dark-mode');
-      } else {
-        body.classList.add('light-mode');
-      }
+      body.classList.add('light-mode');
     }
+  }
 
-    toggleBtn.addEventListener('click', () => {
-      if (body.classList.contains('dark-mode')) {
-        body.classList.remove('dark-mode');
-        body.classList.add('light-mode');
-        localStorage.setItem('theme', 'light-mode');
-      } else {
-        body.classList.remove('light-mode');
-        body.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark-mode');
+  toggleBtn.addEventListener('click', () => {
+    if (body.classList.contains('dark-mode')) {
+      body.classList.remove('dark-mode');
+      body.classList.add('light-mode');
+      localStorage.setItem('theme', 'light-mode');
+    } else {
+      body.classList.remove('light-mode');
+      body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark-mode');
+    }
+  });
+
+  // Sidebar navigation logic
+  sidebarLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href").substring(1);
+      const targetSection = document.getElementById(targetId);
+      sections.forEach(section => section.classList.remove("active"));
+      if (targetSection) {
+        targetSection.classList.add("active");
+        headerBox.style.display = (targetId === "about") ? "block" : "none";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
   });
+});
+
 </script>
   
 <script data-goatcounter="https://zianida25.goatcounter.com/count"
