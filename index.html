@@ -310,6 +310,22 @@ body.dark-mode .socials img {
   
 </head>
 
+<script>
+  function toggleSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.classList.toggle("open");
+  }
+
+  // Auto-close menu on link click (mobile)
+  document.addEventListener("DOMContentLoaded", () => {
+    const sidebarLinks = document.querySelectorAll(".sidebar a");
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        document.querySelector(".sidebar").classList.remove("open");
+      });
+    });
+  });
+</script>
   
 <body>
 <button id="theme-toggle" class="theme-button">
@@ -631,20 +647,7 @@ toggleBtn.addEventListener('click', () => {
   });
 });
 
-  function toggleSidebar() {
-    const sidebar = document.querySelector(".sidebar");
-    sidebar.classList.toggle("open");
-  }
 
-  // Auto-close menu on link click (mobile)
-  document.addEventListener("DOMContentLoaded", () => {
-    const sidebarLinks = document.querySelectorAll(".sidebar a");
-    sidebarLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        document.querySelector(".sidebar").classList.remove("open");
-      });
-    });
-  });
 
 </script>
   
