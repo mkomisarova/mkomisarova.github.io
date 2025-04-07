@@ -263,6 +263,49 @@ body.dark-mode .socials img {
   filter: brightness(200%) invert(1);
 }
 
+  /*For a phone*/
+    @media (max-width: 768px) {
+    body {
+      flex-direction: column;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 70%;
+      height: 100%;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 999;
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+    }
+
+    .hamburger {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    main {
+      margin-left: 0;
+      padding-top: 4rem;
+    }
+
+    .theme-button {
+      top: 1rem;
+      right: 3.5rem; 
+    }
+  }
   </style>
   
 </head>
@@ -274,7 +317,7 @@ body.dark-mode .socials img {
   <span class="slash">/</span>
   <span class="icon moon">🌙</span>
 </button>
-
+<button class="hamburger" onclick="toggleSidebar()">☰</button>
   <div class="sidebar">
     <a href="#about">About</a>
     
@@ -587,6 +630,21 @@ toggleBtn.addEventListener('click', () => {
     });
   });
 });
+
+  function toggleSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.classList.toggle("open");
+  }
+
+  // Auto-close menu on link click (mobile)
+  document.addEventListener("DOMContentLoaded", () => {
+    const sidebarLinks = document.querySelectorAll(".sidebar a");
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        document.querySelector(".sidebar").classList.remove("open");
+      });
+    });
+  });
 
 </script>
   
