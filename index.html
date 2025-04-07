@@ -216,19 +216,40 @@
   body.light-mode .socials a {
     color: #444;
   }
-    .theme-button {
+  .theme-button {
   position: fixed;
   top: 1rem;
   right: 1rem;
   z-index: 1000;
-  padding: 0.5rem 0.75rem;
-  font-size: 1rem;
+  font-size: 1.3rem;
   border: none;
-  background-color: #ffe599;
-  color: #222;
-  border-radius: 5px;
+  background: none;
+  color: inherit;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 0.4rem 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.theme-button:hover {
+  opacity: 1;
+}
+
+.theme-button .icon {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+/* Highlight based on mode */
+body.light-mode .sun {
+  opacity: 1;
+}
+
+body.dark-mode .moon {
+  opacity: 1;
 }
 
 body.dark-mode .theme-button {
@@ -249,7 +270,10 @@ body.dark-mode .theme-button {
 
   
 <body>
-  <button id="theme-toggle" class="theme-button">☀️ / 🌙</button>
+<button id="theme-toggle" class="theme-button">
+  <span class="icon sun">☀️</span> /
+  <span class="icon moon">🌙</span>
+</button>
 
   <div class="sidebar">
     <a href="#about">About</a>
@@ -354,7 +378,7 @@ body.dark-mode .theme-button {
           <li><a href="#beat-the-deck"> The best strategy to win a card game "Beat The Deck"</a></li>
         </ul>
       </nav>
-      <h3 id="#beat-the-deck">The best strategy to win a card game "Beat The Deck"</h3>
+      <h3 id="beat-the-deck">The best strategy to win a card game "Beat The Deck"</h3>
       <p>I've been seeing this game called 'Beat The Deck' on TikTok, played by Highland Bros.
       It is a very simple one player card game played with a standard deck of cards, and the rules are as follows:
       You put 9 cards on the table face up, the rest in a pile face down. 
@@ -520,30 +544,28 @@ body.dark-mode .theme-button {
 
   // Then handle dark/light theme
   const toggleBtn = document.getElementById('theme-toggle');
-  const body = document.body;
+const body = document.body;
 
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    body.classList.add(savedTheme);
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  body.classList.add(savedTheme);
+} else {
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  body.classList.add(systemPrefersDark ? 'dark-mode' : 'light-mode');
+}
+
+toggleBtn.addEventListener('click', () => {
+  if (body.classList.contains('dark-mode')) {
+    body.classList.remove('dark-mode');
+    body.classList.add('light-mode');
+    localStorage.setItem('theme', 'light-mode');
   } else {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      body.classList.add('dark-mode');
-    } else {
-      body.classList.add('light-mode');
-    }
+    body.classList.remove('light-mode');
+    body.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark-mode');
   }
+});
 
-  toggleBtn.addEventListener('click', () => {
-    if (body.classList.contains('dark-mode')) {
-      body.classList.remove('dark-mode');
-      body.classList.add('light-mode');
-      localStorage.setItem('theme', 'light-mode');
-    } else {
-      body.classList.remove('light-mode');
-      body.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark-mode');
-    }
-  });
 
   // Sidebar navigation logic
   sidebarLinks.forEach(link => {
