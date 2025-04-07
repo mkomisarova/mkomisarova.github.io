@@ -264,7 +264,7 @@ body.dark-mode .socials img {
 }
 
   /*For a phone*/
-    @media (max-width: 768px) {
+  @media (max-width: 768px) {
     body {
       flex-direction: column;
     }
@@ -278,6 +278,8 @@ body.dark-mode .socials img {
       transform: translateX(-100%);
       transition: transform 0.3s ease;
       z-index: 999;
+      background-color: #fce5a5;
+      padding-top: 4rem; /* extra space for hamburger */
     }
 
     .sidebar.open {
@@ -288,7 +290,7 @@ body.dark-mode .socials img {
       position: fixed;
       top: 1rem;
       left: 1rem;
-      z-index: 1000;
+      z-index: 1001;
       font-size: 2rem;
       background: none;
       border: none;
@@ -298,15 +300,25 @@ body.dark-mode .socials img {
 
     main {
       margin-left: 0;
-      padding-top: 4rem;
+      padding-top: 6rem; /* more padding to prevent header overlap */
     }
 
     .theme-button {
       top: 1rem;
-      right: 3.5rem; 
+      right: 3.5rem; /* prevent overlap with hamburger */
+    }
+
+    header h1, header p {
+      display: block;
+      text-align: center;
+    }
+
+    header p {
+      margin-top: 0.8rem;
     }
   }
-  </style>
+</style>
+
   
 </head>
 
@@ -317,15 +329,17 @@ body.dark-mode .socials img {
   }
 
   // Auto-close menu on link click (mobile)
-  document.addEventListener("DOMContentLoaded", () => {
+  window.addEventListener("load", () => {
     const sidebarLinks = document.querySelectorAll(".sidebar a");
     sidebarLinks.forEach(link => {
       link.addEventListener("click", () => {
-        document.querySelector(".sidebar").classList.remove("open");
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.classList.remove("open");
       });
     });
   });
 </script>
+
   
 <body>
 <button id="theme-toggle" class="theme-button">
@@ -333,7 +347,9 @@ body.dark-mode .socials img {
   <span class="slash">/</span>
   <span class="icon moon">🌙</span>
 </button>
+   
 <button class="hamburger" onclick="toggleSidebar()">☰</button>
+  
   <div class="sidebar">
     <a href="#about">About</a>
     
