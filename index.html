@@ -125,6 +125,123 @@
 .project-menu a:hover {
   text-decoration: underline;
 }
+ /* Dark mode - via prefers-color-scheme */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #1e1e1e;
+      color: #e6e1d8;
+    }
+
+    header {
+      background-color: #3a3a3a;
+    }
+
+    .sidebar {
+      background-color: #333024;
+    }
+
+    .sidebar a {
+      color: #ddd;
+    }
+
+    main {
+      color: #e6e1d8;
+    }
+
+    .project-menu a {
+      color: #91cfff;
+    }
+
+    .socials a {
+      color: #ccc;
+    }
+  }
+
+  /* Manual override - dark mode */
+  body.dark-mode {
+    background-color: #1e1e1e;
+    color: #e6e1d8;
+  }
+
+  body.dark-mode header {
+    background-color: #3a3a3a;
+  }
+
+  body.dark-mode .sidebar {
+    background-color: #333024;
+  }
+
+  body.dark-mode .sidebar a {
+    color: #ddd;
+  }
+
+  body.dark-mode main {
+    color: #e6e1d8;
+  }
+
+  body.dark-mode .project-menu a {
+    color: #91cfff;
+  }
+
+  body.dark-mode .socials a {
+    color: #ccc;
+  }
+
+  /* Optional: light mode override */
+  body.light-mode {
+    background-color: #fff5cc;
+    color: #222;
+  }
+
+  body.light-mode header {
+    background-color: #ffe599;
+  }
+
+  body.light-mode .sidebar {
+    background-color: #fce5a5;
+  }
+
+  body.light-mode .sidebar a {
+    color: #333;
+  }
+
+  body.light-mode main {
+    color: #222;
+  }
+
+  body.light-mode .project-menu a {
+    color: #0077cc;
+  }
+
+  body.light-mode .socials a {
+    color: #444;
+  }
+    .theme-button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #ffe599;
+  color: #222;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode .theme-button {
+  background-color: #3a3a3a;
+  color: #f0f0f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme-button {
+    background-color: #3a3a3a;
+    color: #f0f0f0;
+  }
+}
 
   </style>
   
@@ -132,6 +249,8 @@
 
   
 <body>
+  <button id="theme-toggle" class="theme-button">☀️ / 🌙</button>
+
   <div class="sidebar">
     <a href="#about">About</a>
     
@@ -410,6 +529,32 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       });
+    });
+  });
+  const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      body.classList.add(savedTheme);
+    } else {
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        body.classList.add('dark-mode');
+      } else {
+        body.classList.add('light-mode');
+      }
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        localStorage.setItem('theme', 'light-mode');
+      } else {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark-mode');
+      }
     });
   });
 </script>
