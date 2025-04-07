@@ -106,6 +106,26 @@
   #header-box.show {
     display: block;
   }
+    .project-menu ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 1em;
+}
+
+.project-menu li {
+  display: inline;
+  margin-right: 1em;
+}
+
+.project-menu a {
+  text-decoration: none;
+  color: #0077cc;
+}
+
+.project-menu a:hover {
+  text-decoration: underline;
+}
+
   </style>
   
 </head>
@@ -210,7 +230,12 @@
     <section id="projects" class="content-section">
       <h2>Some of my projects</h2>
       <p>I did all of this for fun, getting inspired from different games I saw in the world. </p>
-      <h3>Calculating the best strategy to win a card game I saw on TikTok</h3>
+      <nav class="project-menu">
+        <ul>
+          <li><a href="#beat-the-deck"> The best strategy to win a card game "Beat The Deck"</a></li>
+        </ul>
+      </nav>
+      <h3 id="#beat-the-deck">The best strategy to win a card game "Beat The Deck"</h3>
       <p>I've been seeing this game called 'Beat The Deck' on TikTok, played by Highland Bros.
       It is a very simple one player card game played with a standard deck of cards, and the rules are as follows:
       You put 9 cards on the table face up, the rest in a pile face down. 
