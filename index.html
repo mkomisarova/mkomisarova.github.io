@@ -257,16 +257,45 @@
       I thought of 5 strategies I can test and tested each of them with 9, 10, 11 and 12 starting piles 
       by simulating 1000 games with each.</p>
       <h4>Strategy 1: Fully random</h4>
+      <p>First I tested the fully random strategy, just to see how it does. It randomly chooses a pile and randomly 
+      says higher or lower.</p>
       <p>Strategy 1 - Estimated win probability with 9 piles: 0.000 <br>
-Strategy 1 - Estimated win probability with 10 piles: 0.000 <br>
-Strategy 1 - Estimated win probability with 11 piles: 0.000 <br>
-Strategy 1 - Estimated win probability with 12 piles: 0.001 <br>
-        Well, the results weren't that surprising. This is obviously not the way this game should be played.</p>
-      <h4>Strategy 2:</h4>
-      <p>Will continue writing this soon! Stay tuned :)</p>
-
+        Strategy 1 - Estimated win probability with 10 piles: 0.000 <br>
+        Strategy 1 - Estimated win probability with 11 piles: 0.000 <br>
+        Strategy 1 - Estimated win probability with 12 piles: 0.001 <br> </p>
+       <p> Well, the results weren't that surprising. This is obviously not the way this game should be played.</p>
+      <h4>Strategy 2: Most extreme value + random on 8</h4>
+      <p>When I played this game myself, I noticed I use a strategy as follows: I choose the pile that is furthest from
+      the middle value (8), and say accordingly higher, if the card is 2-7, and lower, if the card is 9-A. 
+      And if I have only 8's left, I choose randomly.</p>
+      <p>
+        Strategy 2 - Estimated win probability with 9 piles: 0.071 <br>
+        Strategy 2 - Estimated win probability with 10 piles: 0.147 <br>
+        Strategy 2 - Estimated win probability with 11 piles: 0.284 <br>
+        Strategy 2 - Estimated win probability with 12 piles: 0.470 <br>
+      </p>
+      <p>As we can see, I wasn't wrong, playing with my strategy and original 9 piles only has 7% chance of winning! 
+      However, playing the game with 12 piles and this strategy is a great option, as we get 47% chance of winning!</p>
+      <h4>Strategy 3: Same as strategy 2, but random on 7,8,9</h4>
+      <p>I looked at quite a few videos of Highland Bros, and noticed that the startegy that was used sometimes 
+      was almost the same as mine, but they sometimes went randomly on 7 and 9 as well.</p>
+      <p>
+        Strategy 3 - Estimated win probability with 9 piles: 0.047 <br>
+        Strategy 3 - Estimated win probability with 10 piles: 0.132 <br>
+        Strategy 3 - Estimated win probability with 11 piles: 0.242 <br>
+        Strategy 3 - Estimated win probability with 12 piles: 0.381 <br>
+      </p>
+     <p>Well, the probability of winning obviously is lower. Since they always play with 9 piles,
+     that means that in some of their videos the probability of winning is under 5%! It's also interesting to note that 
+     going random on 7 and 9 decreases the chances of winning by quite a lot, for example, by 9% in case of 
+     playing with 12 piles.</p>
+      <h4>Strategy 4: </h4>
+    <p>Will continue writing this soon! Stay tuned :)</p>
+      <p>Also, since each time running this game we get different randomized decks, the probabilites also change, 
+    but they usually stay in the same range with a difference about 2%.</p>
+     
     </section>
-    
+
     <section id="files" class="content-section">
       <h2>Download any related files</h2>
       <p><a href="cv.pdf" download>Download my CV (pdf)</a></p>
