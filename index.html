@@ -319,6 +319,10 @@ body.dark-mode .socials img {
   }
 </style>
 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script> 
   
 </head>
 
@@ -461,9 +465,9 @@ body.dark-mode .socials img {
         </ul>
       </nav>
       <h3 id="beat-the-deck"> 🃏 The best strategy to win a card game "Beat The Deck"</h3>
-      <p>I've been seeing this game called 'Beat The Deck' on TikTok, played by Highland Bros.
+      <p>I've been seeing this game called 'Beat The Deck' on TikTok, played by Highland Bros.</p>
         <h4>🎮 Game Rules</h4>
-      It is a very simple one player card game played with a standard deck of cards, and the rules are as follows:
+      <p>It is a very simple one player card game played with a standard deck of cards, and the rules are as follows:
       You put 9 cards on the table face up, the rest in a pile face down. 
       Then, you point at an existing card on the table and say either 'higher' or 'lower' (or 'under' and 'over').
       You flip the upper card from the pile. Then you compare both of their ranks. 
@@ -552,7 +556,7 @@ body.dark-mode .socials img {
 
       <h3 id="montmorts-matching-problem"> 🎲 Testing out Montmort's matching problem</h3>
       <p>While taking the a probability course on edX, I stumbled upon the "Montmort's matching problem", and since the result seemed absolutely unbelievable to me, 
-        I've decided to try it out myself.
+        I've decided to try it out myself.</p>
         <h4>🎮 The Theory</h4>
         <p>The problem is as follows: "Consider a well-shuffled deck of n cards, labeled 1 through n. 
           You flip over the cards one by one, saying the numbers 1 through  as you do so. 
@@ -579,12 +583,23 @@ body.dark-mode .socials img {
       <p>I decided to test it out on a computer as well to see when does it start converging to 62% and how would
       the winning position distribution look like.</p>
       <img src="montmort4.png">
-      I ran the code with a few different randomly generated decks, and we can see that at 100 games it still wiggles a bit,
-      but it it quite close to the theoretical result after 200 games.
+      <p>I ran the code with a few different randomly generated decks, and we can see that at 100 games it still wiggles a bit,
+      but it it quite close to the theoretical result after 200 games.</p>
       <img src="montmort3.png" >
-      I ran the code with 10000 games to obtain this wonderful distribution of the winning positions and we can obviously
-      see that the winning positions that are closer to the beginning are the most common.
+      <p>I ran the code with 10000 games to obtain this wonderful distribution of the winning positions and we can obviously
+      see that the winning positions that are closer to the beginning are the most common.</p>
+      <h4>📊 Observations & Takeaways</h4>
+      <p>Overall, the theory obviously is right, even though it might seem unbelievable at first.
+      This was a very interesting experiment for me and I really enjoyed playing it.</p>
       
+      <h3 id="egmo2025"> 🤖 Which AI models can solve EGMO 2025 problems?</h3>
+      <p>EGMO 2025 has taken place recently, and the problems were really interesting. 
+      After solving a few myself, I decided to test out how would different AI models do at this year's EGMO.</p>
+        <h4>Problem 1</h4>
+      <p>For a positive integer $N$, let \(c_1 < c_2 < \cdots < c_m \) be all the positive integers smaller than \(N\) that are coprime to \(N\). 
+        Find all \(N \geq 3\) such that \( \operatorname{gcd}\left(N, c_i+c_{i+1}\right) \neq 1 \) for all \(1 \leq i \leq m-1\).
+Here \(\operatorname{gcd}(a, b)\) is the largest positive integer that divides both \(a\) and \(b\). Integers \(a\) and \(b\) are coprime
+                                                 if \(\operatorname{gcd}(a, b)=1\). </p>
     </section>
 
     <section id="files" class="content-section">
