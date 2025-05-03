@@ -598,12 +598,64 @@ body.dark-mode .socials img {
       <hr>
       <h3 id="egmo2025"> 🤖 Which AI models can solve EGMO 2025 problems?</h3>
       <p>EGMO 2025 has taken place recently, and the problems were really interesting. 
-      After solving a few myself, I decided to test out how would different AI models do at this year's EGMO.</p>
+      After solving a few myself, I decided to test out how different AI models would do at this year's EGMO.</p>
         <h4>Problem 1</h4>
-      <p>For a positive integer $N$, let \(c_1 < c_2 < \cdots < c_m \) be all the positive integers smaller than \(N\) that are coprime to \(N\). 
+      <p>For a positive integer \(N\), let \(c_1 < c_2 < \cdots < c_m \) be all the positive integers smaller than \(N\) that are coprime to \(N\). 
         Find all \(N \geq 3\) such that \( \operatorname{gcd}\left(N, c_i+c_{i+1}\right) \neq 1 \) for all \(1 \leq i \leq m-1\).
-Here \(\operatorname{gcd}(a, b)\) is the largest positive integer that divides both \(a\) and \(b\). Integers \(a\) and \(b\) are coprime
-                                                 if \(\operatorname{gcd}(a, b)=1\). </p>
+     Here \(\operatorname{gcd}(a, b)\) is the largest positive integer that divides both \(a\) and \(b\). Integers \(a\) and \(b\) are coprime
+     if \(\operatorname{gcd}(a, b)=1\). </p>
+        <p>The answer to this problem is all even \(N\) and all \(N\) that are powers of 3.</p>
+        <p>The solution steps are proving that all even \(N\) work, proving that all \(N = 3^m\) work, proving that other
+        numbers don't work.</p>
+        <table border="1">
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Solution</th>
+      <th>Reasoning</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ChatGPT 4o</td>
+      <td>🟡 all even</td>
+      <td>❌ None</td>
+      <td> Got evens right, no odd case proof</td>
+    </tr>
+    <tr>
+      <td>ChatGPT o3</td>
+      <td>✅ all even, \(3^k\)</td>
+      <td>✅ Strong</td>
+      <td>Solved fully with solid proof</td>
+    </tr>
+    <tr>
+      <td>ChatGPT o4-mini-high</td>
+      <td>❌ \(2^a3^b\)</td>
+      <td>❌ None</td>
+      <td>Found examples, wrong answer</td>
+    </tr>
+    <tr>
+      <td>Claude 3.5 Sonnet</td>
+      <td>❌ \(2^k\)</td>
+      <td>❌ None</td>
+      <td>Found examples, wrong answer</td>
+    </tr>
+    <tr>
+      <td>DeepSeek</td>
+      <td>✅ all even, \(3^k\)</td>
+      <td>❌ None</td>
+      <td>Correct answer, no explanation given</td>
+    </tr>
+    <tr>
+      <td>Grok 2</td>
+      <td>❌ \(p^2\)</td>
+      <td>❌ None</td>
+      <td>No testing cases, wrong answer</td>
+    </tr>
+  </tbody>
+</table>
+
     </section>
 
     <section id="files" class="content-section">
