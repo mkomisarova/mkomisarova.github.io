@@ -318,3 +318,15 @@ table, th, td {
   border: 1px solid #444;
 }
 
+/* hide on desktop */
+.hamburger {
+  display: none;
+}
+
+/* show on phone */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
+
