@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milana Komisarova</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <button id="theme-toggle" class="theme-button">
+    <span class="icon sun">☀️</span>
+    <span class="slash">/</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <button class="hamburger" onclick="toggleSidebar()">☰</button>
+
+  <div id="sidebar"></div>
+
+  <main>
+    <div id="header-box"></div>
+    <div id="content"></div>
+    <footer id="footer"></footer>
+  </main>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.querySelector(".sidebar");
+      sidebar?.classList.toggle("open");
+    }
+
+    async function loadPartial(id, file) {
+      const res = await fetch(file);
+      const html = await res.text();
+      document.getElementById(id).innerHTML = html;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadPartial("sidebar", "sidebar.html");
+      loadPartial("header-box", "header.html");
+      loadPartial("footer", "footer.html");
+      loadPartial("content", "1about.html");
+
+      const toggleBtn = document.getElementById('theme-toggle');
+      const body = document.body;
+
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        body.classList.add(savedTheme);
+      } else {
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        body.classList.add(systemPrefersDark ? 'dark-mode' : 'light-mode');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+          body.classList.remove('dark-mode');
+          body.classList.add('light-mode');
+          localStorage.setItem('theme', 'light-mode');
+        } else {
+          body.classList.remove('light-mode');
+          body.classList.add('dark-mode');
+          localStorage.setItem('theme', 'dark-mode');
+        }
+      });
+
+      // Auto-close sidebar on mobile when a link is clicked
+      const sidebarLinks = document.querySelectorAll(".sidebar a");
+      sidebarLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          const sidebar = document.querySelector(".sidebar");
+          sidebar.classList.remove("open");
+        });
+      });
+    });
+  </script>
+
+  <script data-goatcounter="https://zianida25.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  <script type="module">
+    import { fairyDustCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+    new fairyDustCursor({
+      colors: ["#ff99cc", "#ff9966", "#cc66ff"]
+    });
+  </script>
+  <!-- Cursor effects provided by https://github.com/tholman/cursor-effects -->
+</body>
+</html>
