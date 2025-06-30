@@ -4,494 +4,107 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Milana Komisarova</title>
-  <style>
-    body {
-      background-color: #fff5cc;
-      font-family: 'Georgia', serif;
-      color: #222;
-      margin: 0;
-      min-height: 100vh;
-      padding: 0;
-      display: flex;
-      flex-direction: row;
-    }
-    header {
-      background-color: #ffe599;
-      padding: 2rem;
-      text-align: center;
-      width: 100%;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    .sidebar {
-      background-color: #fce5a5;
-      width: 200px;
-      padding: 2rem 1rem;
-      box-sizing: border-box;
-      height: 100vh;
-      position: fixed;
-    }
-    .sidebar a {
-      display: block;
-      margin-bottom: 1rem;
-      text-decoration: none;
-      color: #333;
-      font-size: 1.1rem;
-    }
-    main {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex-grow: 1;
-      margin-left: 220px;
-      padding: 2rem;
-      max-width: 800px;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: auto;
-      padding: 1rem 0;
-    }
-    .socials {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      align-items: center;
-    }
-    .socials a {
-      text-decoration: none;
-      color: #444;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-    .socials img {
-      width: 20px;
-      height: 20px;
-    }
-    #awards h3 {
-      margin-top: 0.8rem;
-      margin-bottom: 0.3rem;
-      font-weight: bold;
-      font-size: 1.3rem;
-    }
-    
-    #awards h4 {
-      margin-top: 0.8rem;
-      margin-bottom: 0.3rem;
-      font-weight: normal;
-      font-size: 1.1rem;
-    }
-    #awards ul {
-      margin-top: 0;
-      margin-bottom: 1rem;
-    }
-    .content-section {
-    display: none;
-  }
-  .content-section.active {
-    display: block;
-  }
-    #header-box {
-    display: none;
-  }
-  #about.active ~ #header-box,
-  #header-box.show {
-    display: block;
-  }
-    .project-menu ul {
-  list-style-type: none;
-  padding-left: 0;
-  margin-bottom: 1em;
-}
-
-.project-menu li {
-  display: inline;
-  margin-right: 1em;
-}
-
-.project-menu a {
-  text-decoration: none;
-  color: #0077cc;
-}
-
-.project-menu a:hover {
-  text-decoration: underline;
-}
- /* Dark mode - via prefers-color-scheme */
-  @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #1e1e1e;
-      color: #e6e1d8;
-    }
-
-    header {
-      background-color: #3a3a3a;
-    }
-
-    .sidebar {
-      background-color: #333024;
-    }
-
-    .sidebar a {
-      color: #ddd;
-    }
-
-    main {
-      color: #e6e1d8;
-    }
-
-    .project-menu a {
-      color: #91cfff;
-    }
-
-    .socials a {
-      color: #ccc;
-    }
-  }
-
-  /* Manual override - dark mode */
-  body.dark-mode {
-    background-color: #1e1e1e;
-    color: #e6e1d8;
-  }
-
-  body.dark-mode header {
-    background-color: #3a3a3a;
-  }
-
-  body.dark-mode .sidebar {
-    background-color: #333024;
-  }
-
-  body.dark-mode .sidebar a {
-    color: #ddd;
-  }
-
-  body.dark-mode main {
-    color: #e6e1d8;
-  }
-
-  body.dark-mode .project-menu a {
-    color: #91cfff;
-  }
-
-  body.dark-mode .socials a {
-    color: #ccc;
-  }
-
-  /* Optional: light mode override */
-  body.light-mode {
-    background-color: #fff5cc;
-    color: #222;
-  }
-
-  body.light-mode header {
-    background-color: #ffe599;
-  }
-
-  body.light-mode .sidebar {
-    background-color: #fce5a5;
-  }
-
-  body.light-mode .sidebar a {
-    color: #333;
-  }
-
-  body.light-mode main {
-    color: #222;
-  }
-
-  body.light-mode .project-menu a {
-    color: #0077cc;
-  }
-
-  body.light-mode .socials a {
-    color: #444;
-  }
-  .theme-button {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 1000;
-  font-size: 1.4rem;
-  border: none;
-  background: none;
-  color: inherit;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-  opacity: 0.85;
-  transition: opacity 0.2s ease;
-}
-
-.theme-button:hover {
-  opacity: 1;
-}
-
-.theme-button .icon {
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-
-.theme-button .slash {
-  opacity: 0.4;
-  font-size: 1.1rem;
-  line-height: 1;
-  transform: translateY(1px);
-}
-
-
-/* Highlight based on mode */
-body.light-mode .sun {
-  opacity: 1;
-}
-
-body.dark-mode .moon {
-  opacity: 1;
-}
-body.dark-mode .socials img {
-  filter: brightness(200%) invert(1);
-}
-
-  /*For a phone*/
-  @media (max-width: 768px) {
-    body {
-      flex-direction: column;
-    }
-
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 70%;
-      height: 100%;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      z-index: 999;
-      background-color: #fce5a5;
-      padding-top: 4rem; /* extra space for hamburger */
-    }
-
-    .sidebar.open {
-      transform: translateX(0);
-    }
-
-    .hamburger {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      z-index: 1001;
-      font-size: 2rem;
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-    }
-
-    main {
-      margin-left: 0;
-      padding-top: 6rem; /* more padding to prevent header overlap */
-    }
-
-    .theme-button {
-      top: 1rem;
-      right: 3.5rem; /* prevent overlap with hamburger */
-    }
-
-    header h1, header p {
-      display: block;
-      text-align: center;
-    }
-
-    header p {
-      margin-top: 0.8rem;
-    }
-  }
-    table {
-  border-collapse: collapse;
-}
-
-table, th, td {
-  border: 1px solid #444;
-}
-</style>
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script> 
-  
+  </script>
 </head>
-
-<script>
-  function toggleSidebar() {
-    const sidebar = document.querySelector(".sidebar");
-    sidebar.classList.toggle("open");
-  }
-
-  // Auto-close menu on link click (mobile)
-  window.addEventListener("load", () => {
-    const sidebarLinks = document.querySelectorAll(".sidebar a");
-    sidebarLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        const sidebar = document.querySelector(".sidebar");
-        sidebar.classList.remove("open");
-      });
-    });
-  });
-</script>
-
-  
 <body>
-<button id="theme-toggle" class="theme-button">
-  <span class="icon sun">☀️</span>
-  <span class="slash">/</span>
-  <span class="icon moon">🌙</span>
-</button>
-   
-<button class="hamburger" onclick="toggleSidebar()">☰</button>
-  
-  <div class="sidebar">
-    <a href="#about">About</a>
-    
-    <h3>Career</h3>
-    <a href="#awards">Awards</a>
-    <a href="#languages">Languages</a>
-    <a href="#projects">Projects</a>
-    <a href="#files">Files</a>
-  
-    <h3>Fun</h3>
-    <a href="#hobbies">Hobbies</a>
-    <a href="#funfacts">Fun Facts</a>
-    <a href="#travel">Travel</a>
-    <a href="#music">Music</a>
-  </div>
+  <button id="theme-toggle" class="theme-button">☀️ / 🌙</button>
+  <button class="hamburger" onclick="toggleSidebar()">☰</button>
+
+  <div id="sidebar"></div>
 
   <main>
-    <div id="header-box">
-      <header>
-        <h1>Milana Komisarova</h1>
-        <p>Math lover • Problem solver • Always learning</p>
-        <div class="socials">
-          <a href="mailto:milana.komisarova@gmail.com"><img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email" />milana.komisarova@gmail.com</a>
-          <a href="tel:+37126855516"><img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone" />+371 26855516</a>
-          <a href="https://www.linkedin.com/in/milana-komisarova-769117249" target="_blank"><img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn" />LinkedIn</a>
-          <a href="cv.pdf" download><img src="https://img.icons8.com/ios-filled/50/000000/document.png" alt="CV" />CV</a>
-        </div>
-      </header>
-    </div>
-    
-    <section id="about" class="content-section">
-      <h2>About Me</h2>
-      <h4>Short and formal version</h4>
-      <p>
-        I’m passionate about mathematics and problem solving, 
-        with years of experience in olympiads and competitive environments. 
-        I enjoy diving into new ideas and learning fast, 
-        and I’m currently open to math-related opportunities where I can contribute and grow. </p>
-      <h4>Long and informal version</h4>
-        <p>
-          I was born in Jelgava and raised in Riga, Latvia. I attended Riga State gymnasium No.1 2016-2022. 
-          I have been particicpating in olympiads from the first grades, mainly focusing on mathematics,
-          but also enjoying linguistics, physics, chemistry, biology, German and other.<br>
-          In 2022 I moved to France and started my Bachelor at Ecole Polytechnique, double majoring in Mathematics and Computer
-          Science. I have already presented my Bachelor Thesis and will graduate in June. <br>
-          I speak Russian, Latvian, English fluently and French, German not so fluently. 
-          I plan to learn either Spanish or Italian in the nearest future. <br>
-          I love traveling and discovering new places, enjoy sudoku a lot, and do a lot of other stuff as well - 
-          knitting, painting, reading etc.
-        </p>
-      <p>
-        This website is still a work in progress :)
-      </p>
-    </section>
-
-    
+    <div id="header-box"></div>
     <div id="content"></div>
-
-    <footer>
-      &copy; 2025 Milana Komisarova
-    </footer>
+    <div id="footer"></div>
   </main>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll(".content-section");
-  const sidebarLinks = document.querySelectorAll(".sidebar a");
-  const headerBox = document.getElementById("header-box");
-
-  // Show "about" section initially
-  const aboutSection = document.querySelector("#about");
-  if (aboutSection) {
-    aboutSection.classList.add("active");
-    headerBox.style.display = "block";
+  async function loadPartial(id, file) {
+    const res  = await fetch(file);
+    const html = await res.text();
+    document.getElementById(id).innerHTML = html;
   }
 
-  // Then handle dark/light theme
-  const toggleBtn = document.getElementById('theme-toggle');
-const body = document.body;
-
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-  body.classList.add(savedTheme);
-} else {
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  body.classList.add(systemPrefersDark ? 'dark-mode' : 'light-mode');
-}
-
-toggleBtn.addEventListener('click', () => {
-  if (body.classList.contains('dark-mode')) {
-    body.classList.remove('dark-mode');
-    body.classList.add('light-mode');
-    localStorage.setItem('theme', 'light-mode');
-  } else {
-    body.classList.remove('light-mode');
-    body.classList.add('dark-mode');
-    localStorage.setItem('theme', 'dark-mode');
+  function toggleSidebar() {
+    document.querySelector('.sidebar')?.classList.toggle('open');
   }
-});
 
+  document.addEventListener('DOMContentLoaded', async () => {
+    // 1️⃣ inject sidebar, header, default content, footer
+    await loadPartial('sidebar',     'sidebar.html');
+    await loadPartial('header-box',  'header.html');
+    await loadPartial('content',     '1about.html');
+    await loadPartial('footer',      'footer.html');
 
-  // Sidebar navigation logic
-  sidebarLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute("href").substring(1);
-      const targetSection = document.getElementById(targetId);
-      sections.forEach(section => section.classList.remove("active"));
-      if (targetSection) {
-        targetSection.classList.add("active");
-        headerBox.style.display = (targetId === "about") ? "block" : "none";
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 2️⃣ show header immediately
+    document.getElementById('header-box').style.display = 'block';
+
+    // 3️⃣ map your anchors to numbered section files
+    const fileMap = {
+      about:    '1about.html',
+      awards:   '2awards.html',
+      languages:'3languages.html',
+      projects: '4projects.html',
+      files:    '5files.html',
+      hobbies:  '6hobbies.html',
+      funfacts: '7funfacts.html',
+      travel:   '8travel.html',
+      music:    '9music.html'
+    };
+
+    // 4️⃣ wire sidebar clicks
+    document.querySelectorAll('.sidebar a').forEach(link => {
+      link.addEventListener('click', async e => {
+        e.preventDefault();
+        const sectionID = link.getAttribute('href').slice(1);
+        const file      = fileMap[sectionID];
+        if (!file) return;
+
+        // load & display that section
+        await loadPartial('content', file);
+
+        // manage header-box visibility
+        document.getElementById('header-box')
+          .style.display = (sectionID === 'about') ? 'block' : 'none';
+
+        // close sidebar on mobile
+        document.querySelector('.sidebar')?.classList.remove('open');
+      });
+    });
+
+    // 5️⃣ theme toggle (unchanged)
+    const btn  = document.getElementById('theme-toggle');
+    const body = document.body;
+    const saved = localStorage.getItem('theme');
+    if (saved) body.classList.add(saved);
+    else body.classList.add(
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark-mode'
+        : 'light-mode'
+    );
+    btn.addEventListener('click', () => {
+      if (body.classList.contains('dark-mode')) {
+        body.classList.replace('dark-mode','light-mode');
+        localStorage.setItem('theme','light-mode');
+      } else {
+        body.classList.replace('light-mode','dark-mode');
+        localStorage.setItem('theme','dark-mode');
       }
     });
   });
-});
-
-
-
 </script>
-  
-<script data-goatcounter="https://zianida25.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
 
-<script type="module">
-  import { fairyDustCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
-  new fairyDustCursor({
-    colors: ["#ff99cc", "#ff9966", "#cc66ff"] 
-  });
-</script>
+
+  <script data-goatcounter="https://zianida25.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  <script type="module">
+    import { fairyDustCursor } from 'https://unpkg.com/cursor-effects@latest/dist/esm.js';
+    new fairyDustCursor({ colors:['#ff99cc','#ff9966','#cc66ff'] });
+  </script>
   <!-- Cursor effects provided by https://github.com/tholman/cursor-effects -->
-
 </body>
 </html>
