@@ -317,3 +317,16 @@ body.dark-mode .socials img {
 table, th, td {
   border: 1px solid #444;
 }
+
+.hamburger {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
