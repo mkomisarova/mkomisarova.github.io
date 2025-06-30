@@ -322,11 +322,3 @@ table, th, td {
 .hamburger {
   display: none;
 }
-
-/* show on phone */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-}
-
