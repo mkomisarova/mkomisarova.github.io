@@ -11,25 +11,14 @@
   </script>
 </head>
 <body>
-  <button id="theme-toggle" class="theme-button">
-    <span class="icon sun">☀️</span>
-    <span class="slash">/</span>
-    <span class="icon moon">🌙</span>
-  </button>
-
+  <button id="theme-toggle" class="theme-button">☀️ / 🌙</button>
   <button class="hamburger" onclick="toggleSidebar()">☰</button>
 
-  <!-- sidebar.html begins with <div class="sidebar">…</div> -->
   <div id="sidebar"></div>
 
   <main>
-    <!-- header.html begins with <header>…</header> -->
     <div id="header-box"></div>
-
-    <!-- section files (1about.html etc.) begin with <section>…</section> -->
     <div id="content"></div>
-
-    <!-- footer.html begins with <footer>…</footer> -->
     <div id="footer"></div>
   </main>
 
@@ -39,52 +28,71 @@
     }
 
     async function loadPartial(id, file) {
-      const res = await fetch(file);
+      const res  = await fetch(file);
       const html = await res.text();
       document.getElementById(id).innerHTML = html;
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
-      // 1️⃣ Inject each partial in order, awaiting so the DOM is ready
+      // 1) inject sidebar, header, default content, footer
       await loadPartial('sidebar',    'sidebar.html');
-      await loadPartial('header-box','header.html');
-      await loadPartial('content',   '1about.html');
+      await loadPartial('header-box', 'header.html');
+      await loadPartial('content',    '1about.html');
       await loadPartial('footer',     'footer.html');
 
-      // 2️⃣ Now that the sidebar is in the DOM, wire up its close-on-click behavior
+      // 2) build a map from section-ID to your numbered files
+      const fileMap = {
+        about:    '1about.html',
+        awards:   '2awards.html',
+        languages:'3languages.html',
+        projects: '4projects.html',
+        files:    '5files.html',
+        hobbies:  '6hobbies.html',
+        funfacts: '7funfacts.html',
+        travel:   '8travel.html',
+        music:    '9music.html'
+      };
+
+      // 3) wire up each sidebar link
       document.querySelectorAll('.sidebar a').forEach(link => {
-        link.addEventListener('click', () => {
-          document.querySelector('.sidebar')?.classList.remove('open');
+        link.addEventListener('click', async e => {
+          e.preventDefault();
+          const sectionID = link.getAttribute('href').slice(1);
+          const file      = fileMap[sectionID];
+          if (file) {
+            await loadPartial('content', file);
+            document.querySelector('.sidebar')?.classList.remove('open');
+          }
         });
       });
 
-      // 3️⃣ Theme toggle logic (restored exactly)
-      const toggleBtn = document.getElementById('theme-toggle');
+      // 4) theme toggle
+      const btn  = document.getElementById('theme-toggle');
       const body = document.body;
       const saved = localStorage.getItem('theme');
-      if (saved) {
-        body.classList.add(saved);
-      } else {
-        const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        body.classList.add(sysDark ? 'dark-mode' : 'light-mode');
-      }
-      toggleBtn.addEventListener('click', () => {
+      if (saved) body.classList.add(saved);
+      else body.classList.add(
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark-mode'
+          : 'light-mode'
+      );
+      btn.addEventListener('click', () => {
         if (body.classList.contains('dark-mode')) {
-          body.classList.replace('dark-mode', 'light-mode');
-          localStorage.setItem('theme', 'light-mode');
+          body.classList.replace('dark-mode','light-mode');
+          localStorage.setItem('theme','light-mode');
         } else {
-          body.classList.replace('light-mode', 'dark-mode');
-          localStorage.setItem('theme', 'dark-mode');
+          body.classList.replace('light-mode','dark-mode');
+          localStorage.setItem('theme','dark-mode');
         }
       });
     });
   </script>
 
-  <script data-goatcounter="https://zianida25.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
+  <script data-goatcounter="https://zianida25.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
   <script type="module">
-    import { fairyDustCursor } from 'https://unpkg.com/cursor-effects@latest/dist/esm.js';
-    new fairyDustCursor({ colors: ['#ff99cc', '#ff9966', '#cc66ff'] });
+    import { fairyDustCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+    new fairyDustCursor({ colors:['#ff99cc','#ff9966','#cc66ff'] });
   </script>
   <!-- Cursor effects provided by https://github.com/tholman/cursor-effects -->
 </body>
