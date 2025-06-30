@@ -323,10 +323,13 @@ table, th, td {
   top: 1rem;
   left: 1rem;
   z-index: 1001;
-  font-size: 2rem;
+  font-size: 1.5rem;
   background: none;
   border: none;
   color: inherit;
   cursor: pointer;
 }
 
+.sidebar {
+  padding-top: 3rem; 
+}
