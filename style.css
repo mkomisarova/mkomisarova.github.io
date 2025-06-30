@@ -1,0 +1,319 @@
+body {
+      background-color: #fff5cc;
+      font-family: 'Georgia', serif;
+      color: #222;
+      margin: 0;
+      min-height: 100vh;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+    }
+    header {
+      background-color: #ffe599;
+      padding: 2rem;
+      text-align: center;
+      width: 100%;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .sidebar {
+      background-color: #fce5a5;
+      width: 200px;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+      height: 100vh;
+      position: fixed;
+    }
+    .sidebar a {
+      display: block;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1rem;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-left: 220px;
+      padding: 2rem;
+      max-width: 800px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: auto;
+      padding: 1rem 0;
+    }
+    .socials {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      align-items: center;
+    }
+    .socials a {
+      text-decoration: none;
+      color: #444;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .socials img {
+      width: 20px;
+      height: 20px;
+    }
+    #awards h3 {
+      margin-top: 0.8rem;
+      margin-bottom: 0.3rem;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+    
+    #awards h4 {
+      margin-top: 0.8rem;
+      margin-bottom: 0.3rem;
+      font-weight: normal;
+      font-size: 1.1rem;
+    }
+    #awards ul {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .content-section {
+    display: none;
+  }
+  .content-section.active {
+    display: block;
+  }
+    #header-box {
+    display: none;
+  }
+  #about.active ~ #header-box,
+  #header-box.show {
+    display: block;
+  }
+    .project-menu ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 1em;
+}
+
+.project-menu li {
+  display: inline;
+  margin-right: 1em;
+}
+
+.project-menu a {
+  text-decoration: none;
+  color: #0077cc;
+}
+
+.project-menu a:hover {
+  text-decoration: underline;
+}
+ /* Dark mode - via prefers-color-scheme */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #1e1e1e;
+      color: #e6e1d8;
+    }
+
+    header {
+      background-color: #3a3a3a;
+    }
+
+    .sidebar {
+      background-color: #333024;
+    }
+
+    .sidebar a {
+      color: #ddd;
+    }
+
+    main {
+      color: #e6e1d8;
+    }
+
+    .project-menu a {
+      color: #91cfff;
+    }
+
+    .socials a {
+      color: #ccc;
+    }
+  }
+
+  /* Manual override - dark mode */
+  body.dark-mode {
+    background-color: #1e1e1e;
+    color: #e6e1d8;
+  }
+
+  body.dark-mode header {
+    background-color: #3a3a3a;
+  }
+
+  body.dark-mode .sidebar {
+    background-color: #333024;
+  }
+
+  body.dark-mode .sidebar a {
+    color: #ddd;
+  }
+
+  body.dark-mode main {
+    color: #e6e1d8;
+  }
+
+  body.dark-mode .project-menu a {
+    color: #91cfff;
+  }
+
+  body.dark-mode .socials a {
+    color: #ccc;
+  }
+
+  /* Optional: light mode override */
+  body.light-mode {
+    background-color: #fff5cc;
+    color: #222;
+  }
+
+  body.light-mode header {
+    background-color: #ffe599;
+  }
+
+  body.light-mode .sidebar {
+    background-color: #fce5a5;
+  }
+
+  body.light-mode .sidebar a {
+    color: #333;
+  }
+
+  body.light-mode main {
+    color: #222;
+  }
+
+  body.light-mode .project-menu a {
+    color: #0077cc;
+  }
+
+  body.light-mode .socials a {
+    color: #444;
+  }
+  .theme-button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  font-size: 1.4rem;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.theme-button:hover {
+  opacity: 1;
+}
+
+.theme-button .icon {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.theme-button .slash {
+  opacity: 0.4;
+  font-size: 1.1rem;
+  line-height: 1;
+  transform: translateY(1px);
+}
+
+
+/* Highlight based on mode */
+body.light-mode .sun {
+  opacity: 1;
+}
+
+body.dark-mode .moon {
+  opacity: 1;
+}
+body.dark-mode .socials img {
+  filter: brightness(200%) invert(1);
+}
+
+  /*For a phone*/
+  @media (max-width: 768px) {
+    body {
+      flex-direction: column;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 70%;
+      height: 100%;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 999;
+      background-color: #fce5a5;
+      padding-top: 4rem; /* extra space for hamburger */
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+    }
+
+    .hamburger {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1001;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    main {
+      margin-left: 0;
+      padding-top: 6rem; /* more padding to prevent header overlap */
+    }
+
+    .theme-button {
+      top: 1rem;
+      right: 3.5rem; /* prevent overlap with hamburger */
+    }
+
+    header h1, header p {
+      display: block;
+      text-align: center;
+    }
+
+    header p {
+      margin-top: 0.8rem;
+    }
+  }
+    table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #444;
+}
