@@ -30,17 +30,24 @@
     async function loadPartial(id, file) {
       const res  = await fetch(file);
       const html = await res.text();
-      document.getElementById(id).innerHTML = html;
+      const container = document.getElementById(id);
+      container.innerHTML = html;
+
+      // If we're injecting into #content, add .active to show it
+      if (id === 'content') {
+        const sec = container.querySelector('.content-section');
+        if (sec) sec.classList.add('active');
+      }
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
-      // 1) inject sidebar, header, default content, footer
+      // 1) Load sidebar, header, default about, footer
       await loadPartial('sidebar',    'sidebar.html');
       await loadPartial('header-box', 'header.html');
       await loadPartial('content',    '1about.html');
       await loadPartial('footer',     'footer.html');
 
-      // 2) build a map from section-ID to your numbered files
+      // 2) Map anchors to your numbered files
       const fileMap = {
         about:    '1about.html',
         awards:   '2awards.html',
@@ -53,7 +60,7 @@
         music:    '9music.html'
       };
 
-      // 3) wire up each sidebar link
+      // 3) Wire up sidebar clicks
       document.querySelectorAll('.sidebar a').forEach(link => {
         link.addEventListener('click', async e => {
           e.preventDefault();
@@ -66,7 +73,7 @@
         });
       });
 
-      // 4) theme toggle
+      // 4) Theme toggle logic (unchanged)
       const btn  = document.getElementById('theme-toggle');
       const body = document.body;
       const saved = localStorage.getItem('theme');
@@ -91,7 +98,7 @@
   <script data-goatcounter="https://zianida25.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
   <script type="module">
-    import { fairyDustCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+    import { fairyDustCursor } from 'https://unpkg.com/cursor-effects@latest/dist/esm.js';
     new fairyDustCursor({ colors:['#ff99cc','#ff9966','#cc66ff'] });
   </script>
   <!-- Cursor effects provided by https://github.com/tholman/cursor-effects -->
