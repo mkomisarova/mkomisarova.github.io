@@ -14,7 +14,7 @@
   <button id="theme-toggle" class="theme-button">☀️ / 🌙</button>
   <button class="hamburger" onclick="toggleSidebar()">☰</button>
 
-  <div id="sidebar" class="sidebar"></div>
+  <div id="sidebar-container"></div>
 
   <main>
     <div id="header-box"></div>
@@ -39,9 +39,10 @@
     document.querySelector('.sidebar')?.classList.toggle('open');
   }
 
+
   document.addEventListener('DOMContentLoaded', async () => {
     // 1️⃣ inject sidebar, header, default about, footer
-    await loadPartial('sidebar',     'sidebar.html');
+    await loadPartial('sidebar-container', 'sidebar.html');
     await loadPartial('header-box',  'header.html');
     await loadPartial('content',     '1about.html');
     await loadPartial('footer',      'footer.html');
