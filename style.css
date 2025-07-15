@@ -274,6 +274,12 @@ body.dark-mode .socials img {
     body {
       flex-direction: column;
     }
+        .socials {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
 
          .sidebar {
         transform: translateX(-100%);
