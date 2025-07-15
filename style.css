@@ -53,6 +53,13 @@ body {
       margin-top: auto;
       padding: 1rem 0;
     }
+      .project-divider {
+        border: none;
+        height: 2px;
+        background-color: #ffe599;
+        margin: 1.5rem 0;
+      }
+
     .socials {
       margin-top: 1rem;
       font-size: 0.9rem;
