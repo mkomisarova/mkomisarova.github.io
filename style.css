@@ -322,6 +322,8 @@ body.dark-mode .socials img {
             padding-bottom: 1.2rem;
             padding-left: 1rem;
             padding-right: 1rem;
+            max-width: 90%
+            margin: 0 auto;
       }
     header h1, header p {
       display: block;
