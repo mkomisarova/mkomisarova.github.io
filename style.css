@@ -37,16 +37,16 @@ body {
       color: #333;
       font-size: 1.1rem;
     }
-    main {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex-grow: 1;
-      margin-left: 220px;
-      padding: 2rem;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
+      main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        margin-left: 220px;
+        padding: 2rem 3rem 2rem 2rem; 
+        max-width: calc(100vw - 100px); 
+        box-sizing: border-box;
+      }
     footer {
       text-align: center;
       font-size: 0.9rem;
