@@ -44,7 +44,7 @@ body {
         flex-grow: 1;
         margin-left: 220px;
         padding: 2rem 3rem 2rem 2rem; 
-        max-width: calc(100vw - 100px); 
+        max-width: 900px; 
         box-sizing: border-box;
       }
     footer {
@@ -300,7 +300,9 @@ body.dark-mode .socials img {
     main {
       margin-left: 0;
       padding-top: 6rem; /* more padding to prevent header overlap */
+      max-width: 100%;
     }
+
 
     .theme-button {
       top: 1rem;
