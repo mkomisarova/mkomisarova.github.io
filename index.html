@@ -74,6 +74,12 @@
         // load the new section, mark it active
         await loadPartial('content', file);
 
+        //  Re-render MathJax on newly loaded content
+        if (window.MathJax && MathJax.typesetPromise) {
+          MathJax.typesetPromise();
+        }
+
+
         // show or hide header based on "about"
         document.getElementById('header-box')
                 .style.display = (id === 'about') ? 'block' : 'none';
