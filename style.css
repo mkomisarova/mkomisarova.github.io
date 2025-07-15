@@ -21,7 +21,7 @@ body {
       .sidebar {
         background-color: #fce5a5;
         width: 200px;
-        padding: 2rem 1rem;
+        padding: 4rem 2rem 1rem;
         box-sizing: border-box;
         height: 100vh;
         position: fixed;
@@ -285,6 +285,9 @@ body.dark-mode .socials img {
         background-color: #fce5a5;
         z-index: 999;
         padding-top: 4rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 2rem;
         transition: transform 0.3s ease;
       }
       
